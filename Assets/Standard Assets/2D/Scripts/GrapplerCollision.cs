@@ -25,7 +25,7 @@ public class GrapplerCollision : MonoBehaviour {
 		//Debug.Log (a + "," + b);
 		joint.distance = Vector2.Distance( a,b );
 		joint.maxDistanceOnly = true;
-		joint.collideConnected = true;
+		joint.enableCollision = true;
 		joint.enabled = true;
 		GameObject umbrellaGo = GameObject.Find ("Umbrella");
 		umbrellaGo.GetComponent<Grappler>().state = Grappler.GrappleState.HOOK;
