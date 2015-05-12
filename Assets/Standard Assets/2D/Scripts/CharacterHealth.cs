@@ -10,7 +10,7 @@ public class CharacterHealth : MonoBehaviour
 	//public AudioClip[] ouchClips;				// Array of clips to play when the player is damaged.
 	public float hurtForce = 100f;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 0.1f;			// The amount of damage to take when enemies touch the player
-	
+
 	//private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
 	private float lastHitTime;					// The time at which the player was last hit.
 	//private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
@@ -39,8 +39,9 @@ public class CharacterHealth : MonoBehaviour
 	void OnCollisionStay2D (Collision2D col)
 	{
 		// If the colliding gameobject is an Enemy...
-		if(col.gameObject.tag == "Enemy" || col.gameObject.tag == "Water" || col.gameObject.tag == "Obstacles")
+		if(col.gameObject.tag == "Enemy" || col.gameObject.tag == "Water" || col.gameObject.tag == "Obstacles" || col.gameObject.tag == "Water_u")
 		{
+			Debug.Log("damage by something--------------");
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
 			if (Time.time > lastHitTime + repeatDamagePeriod) 
 			{
@@ -48,8 +49,14 @@ public class CharacterHealth : MonoBehaviour
 				if(health > 0f)
 				{
 					// ... take damage and reset the lastHitTime.
-					TakeDamage(col.transform); 
-					lastHitTime = Time.time; 
+					DefinedDamage damage = col.gameObject.GetComponent<DefinedDamage>();
+					Debug.Log("get water object--------------");
+					if(damage!=null){
+						Debug.Log("damage by water--------------");
+						damageAmount = damage.damage;
+					}
+					TakeDamage(col.transform);
+					lastHitTime = Time.time;
 				}
 				// If the player doesn't have health, do some stuff, let him fall into the river to reload the level.
 				else

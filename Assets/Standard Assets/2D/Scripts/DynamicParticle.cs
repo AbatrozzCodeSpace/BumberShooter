@@ -53,7 +53,7 @@ public class DynamicParticle : MonoBehaviour {
 		switch(currentState){
 		case STATES.WATER: //Water and lava got the same behaviour
 			MovementAnimation(); 
-			ScaleDown();
+			//ScaleDown();
 			break;
 		case STATES.LAVA:
 			MovementAnimation();
