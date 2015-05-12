@@ -1,0 +1,385 @@
+fileFormatVersion: 2
+guid: 3bd466ffbce51cc4fbc00aaabb6063aa
+timeCreated: 1430230762
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CharacterAnimIdle_0
+    21300002: CharacterAnimIdle_1
+    21300004: CharacterAnimIdle_2
+    21300006: CharacterAnimIdle_3
+    21300008: CharacterAnimIdle_4
+    21300010: CharacterAnimIdle_5
+    21300012: CharacterAnimIdle_6
+    21300014: CharacterAnimIdle_7
+    21300016: CharacterAnimIdle_8
+    21300018: CharacterAnimIdle_9
+    21300020: CharacterAnimIdle_10
+    21300022: CharacterAnimIdle_11
+    21300024: CharacterAnimIdle_12
+    21300026: CharacterAnimIdle_13
+    21300028: CharacterAnimIdle_14
+    21300030: CharacterAnimIdle_15
+    21300032: CharacterAnimIdle_16
+    21300034: CharacterAnimIdle_17
+    21300036: CharacterAnimIdle_18
+    21300038: CharacterAnimIdle_19
+    21300040: CharacterAnimIdle_20
+    21300042: CharacterAnimIdle_21
+    21300044: CharacterAnimIdle_22
+    21300046: CharacterAnimIdle_23
+    21300048: CharacterAnimIdle_24
+    21300050: CharacterAnimIdle_25
+    21300052: CharacterAnimIdle_26
+    21300054: CharacterAnimIdle_27
+    21300056: CharacterAnimIdle_28
+    21300058: CharacterAnimIdle_29
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CharacterAnimIdle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_2
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_3
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_4
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_5
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_6
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_7
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_8
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_9
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 795
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_11
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_12
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_13
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_14
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_15
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_16
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_17
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_18
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_19
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 560
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_21
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_22
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_23
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_24
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_25
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_26
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_27
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_28
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterAnimIdle_29
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 325
+        width: 88
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
