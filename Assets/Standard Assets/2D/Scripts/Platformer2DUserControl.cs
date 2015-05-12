@@ -28,12 +28,14 @@ namespace UnityStandardAssets._2D
         {	
 			if( canControl ) {
 				m_JumpPressed = CrossPlatformInputManager.GetButton("Jump");
+				Debug.Log("M_JUMP STATE "+m_Jump);
 				m_skillPressed = CrossPlatformInputManager.GetButton("Skill");
+				Debug.Log("M_JUMP STATE "+m_Jump);
 	            if (!m_Jump)
 	            {
 	                // Read the jump input in Update so button presses aren't missed.
 	                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-
+					Debug.Log("M_JUMP 2 STATE "+m_Jump);
 	            }
 				if (!m_skill) {
 					m_skill = CrossPlatformInputManager.GetButtonDown("Skill");
