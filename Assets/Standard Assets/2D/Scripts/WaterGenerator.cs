@@ -29,7 +29,7 @@ public class WaterGenerator : MonoBehaviour {
 		Debug.Log("update water generator");
 		if (lastSpawnTime+SPAWN_INTERVAL<Time.time ) {
 			GameObject spawnedWater = (GameObject) (GameObject.Instantiate( spawningWater ) );
-			spawnedWater.tag = "Water_u";
+			spawnedWater.tag = "Water";
 			Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
 			rigid2d.AddForce( particleForce );
 
