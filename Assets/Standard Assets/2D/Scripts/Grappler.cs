@@ -49,7 +49,7 @@ public class Grappler : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		Debug.Log (state);
+		//Debug.Log (state);
 		if( isGrappling ) {
 			if( state == GrappleState.IDLE ) {
 				state = GrappleState.SHOOT;
