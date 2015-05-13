@@ -62,7 +62,7 @@ namespace UnityStandardAssets._2D
             Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
             {
-				if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Ladder" ) {
+				if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Ladder" && !onTopLadder ) {
 					m_Grounded = true;
 					m_doubleJumped = false;
 					m_Rigidbody2D.gravityScale = m_defaultGravity;
