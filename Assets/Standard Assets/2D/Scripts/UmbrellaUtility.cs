@@ -54,7 +54,9 @@ public class UmbrellaUtility : MonoBehaviour {
 			if ( waterLevel > 1.0f ) {
 				waterLevel = 1.0f;
 			}
-			Destroy( other.gameObject );
+			//Destroy( other.gameObject );
+			DynamicParticle particleScript = other.GetComponent<DynamicParticle>(); // Get the particle script
+			particleScript.SetState(DynamicParticle.STATES.WATER_O);
 		} else if ( other.tag == "Enemy" ) {
 			// disable body colliders!
 			//other.enabled = false;

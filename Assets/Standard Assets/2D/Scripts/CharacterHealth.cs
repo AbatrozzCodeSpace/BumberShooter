@@ -46,17 +46,19 @@ public class CharacterHealth : MonoBehaviour
 			if (Time.time > lastHitTime + repeatDamagePeriod) 
 			{
 				// ... and if the player still has health...
-				if(health > 0f)
+				if(health >0f)
 				{
 					// ... take damage and reset the lastHitTime.
-					DefinedDamage damage = col.gameObject.GetComponent<DefinedDamage>();
+					WaterProp damage = col.gameObject.GetComponent<WaterProp>();
 					Debug.Log("get water object--------------");
 					if(damage!=null){
 						Debug.Log("damage by water--------------");
 						damageAmount = damage.damage;
 					}
-					TakeDamage(col.transform);
-					lastHitTime = Time.time;
+					if(damageAmount>0f){
+						TakeDamage(col.transform);
+						lastHitTime = Time.time;
+					}
 				}
 				// If the player doesn't have health, do some stuff, let him fall into the river to reload the level.
 				else

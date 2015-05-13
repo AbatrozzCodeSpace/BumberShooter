@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DynamicParticle : MonoBehaviour {
-	public enum STATES{WATER,GAS,LAVA,NONE}; //The 3 states of the particle
+	public enum STATES{WATER,WATER_O,GAS,RAIN,LAVA,NONE}; //The 3 states of the particle
 	STATES currentState=STATES.NONE; //Defines the currentstate of the particle, default is water
 	public GameObject currentImage; //The image is for the metaball shader for the effect, it is onle seen by the liquids camera.
 	public GameObject[] particleImages; //We need multiple particle images to reduce drawcalls
@@ -19,6 +19,15 @@ public class DynamicParticle : MonoBehaviour {
 			switch(newState){
 			case STATES.WATER:													
 				GetComponent<Rigidbody2D>().gravityScale=1.0f; // To simulate Water density
+				break;
+			case STATES.WATER_O:
+				GetComponent<Rigidbody2D>().gravityScale=0.0f;
+				GetComponent<Rigidbody2D>().velocity=Vector2.zero;
+				GetComponent<WaterProp>().damage=0.0f;
+				GetComponent<WaterProp>().volume=0.0f;
+				break;
+			case STATES.RAIN:
+				GetComponent<Rigidbody2D>().gravityScale=0.0f;
 				break;
 			case STATES.GAS:		
 				particleLifeTime=particleLifeTime/2.0f;	// Gas lives the time the other particles
@@ -55,6 +64,12 @@ public class DynamicParticle : MonoBehaviour {
 			MovementAnimation(); 
 			//ScaleDown();
 			break;
+		case STATES.RAIN:
+			MovementAnimation();
+			break;
+		case STATES.WATER_O:
+			ScaleDown();
+			break;
 		case STATES.LAVA:
 			MovementAnimation();
 			ScaleDown();
@@ -65,7 +80,6 @@ public class DynamicParticle : MonoBehaviour {
 			}
 			ScaleDown();
 			break;
-			
 		}
 	}
 

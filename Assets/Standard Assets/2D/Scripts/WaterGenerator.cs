@@ -8,7 +8,8 @@ public class WaterGenerator : MonoBehaviour {
 	public Vector3 particleForce; //Is there a initial force particles should have?
 	public DynamicParticle.STATES particlesState=DynamicParticle.STATES.WATER; // The state of the particles spawned
 	public GameObject waterSource;
-	public float damage = 0.01f;
+	public float damage = 0.05f;
+	public float volume = 0.01f;
 
 	// Use this for initialization
 	void Start () {
@@ -38,9 +39,11 @@ public class WaterGenerator : MonoBehaviour {
 			particleScript.SetState(particlesState); //Set the particle State
 			spawnedWater.transform.position = transform.position;// Relocate to the spawner position
 			spawnedWater.transform.rotation = transform.rotation;
-			DefinedDamage damagePropOfWater = spawnedWater.GetComponent<DefinedDamage>();
-			if(damagePropOfWater!=null)
-				damagePropOfWater.damage = damage;
+			WaterProp waterProp = spawnedWater.GetComponent<WaterProp>();
+			if(waterProp!=null){
+				waterProp.damage = damage;
+				waterProp.volume = volume;
+			}
 
 			lastSpawnTime=Time.time;
 		}
