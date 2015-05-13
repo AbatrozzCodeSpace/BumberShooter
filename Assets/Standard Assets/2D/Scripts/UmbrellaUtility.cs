@@ -49,8 +49,10 @@ public class UmbrellaUtility : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D( Collider2D other ) {
-		if ( other.tag == "Water" ) {
-			waterLevel += waterLevelForEachHit;
+		if ( other.tag == "Water" || other.tag == "Rain") {
+			WaterProp waterProp = other.gameObject.GetComponent<WaterProp>();
+			if(waterProp != null)
+			waterLevel += waterProp.volume;
 			if ( waterLevel > 1.0f ) {
 				waterLevel = 1.0f;
 			}
