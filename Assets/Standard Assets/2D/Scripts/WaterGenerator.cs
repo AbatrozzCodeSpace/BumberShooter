@@ -7,8 +7,9 @@ public class WaterGenerator : MonoBehaviour {
 	public int PARTICLE_LIFETIME=3; //How much time will each particle live
 	public Vector3 particleForce; //Is there a initial force particles should have?
 	public DynamicParticle.STATES particlesState=DynamicParticle.STATES.WATER; // The state of the particles spawned
-	public Transform particlesParent; // Where will the spawned particles will be parented (To avoid covering the whole inspector with them)
-	public GameObject spawningWater;
+	public GameObject waterSource;
+	public float damage = 0.01f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -26,9 +27,8 @@ public class WaterGenerator : MonoBehaviour {
 		//			newLiquidParticle.transform.parent=particlesParent;// Add the particle to the parent container			
 		//			lastSpawnTime=Time.time; // Register the last spawnTime			
 		//		}
-		Debug.Log("update water generator");
 		if (lastSpawnTime+SPAWN_INTERVAL<Time.time ) {
-			GameObject spawnedWater = (GameObject) (GameObject.Instantiate( spawningWater ) );
+			GameObject spawnedWater = (GameObject) (GameObject.Instantiate( waterSource ) );
 			spawnedWater.tag = "Water";
 			Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
 			rigid2d.AddForce( particleForce );
@@ -38,9 +38,10 @@ public class WaterGenerator : MonoBehaviour {
 			particleScript.SetState(particlesState); //Set the particle State
 			spawnedWater.transform.position = transform.position;// Relocate to the spawner position
 			spawnedWater.transform.rotation = transform.rotation;
-			spawnedWater.transform.parent = particlesParent;// Add the particle to the parent container	
+			DefinedDamage damagePropOfWater = spawnedWater.GetComponent<DefinedDamage>();
+			if(damagePropOfWater!=null)
+				damagePropOfWater.damage = damage;
 
-			Debug.Log( "spawn from water generator " ); 
 			lastSpawnTime=Time.time;
 		}
 	}
