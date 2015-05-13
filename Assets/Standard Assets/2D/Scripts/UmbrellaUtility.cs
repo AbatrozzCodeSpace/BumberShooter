@@ -10,6 +10,11 @@ public class UmbrellaUtility : MonoBehaviour {
 	public float delaySpawningWaterTime = 0.5f;
 	private float delaySpawningWaterTimeLeft;
 	private bool m_skillPressed;
+	private bool m_AttackPressed;
+	public float attackDelay = 0.25f;
+	private float currentAttackDelay;
+
+	public GameObject blowObject;
 
 	public enum Mode {
 		GRAPPLER = 0,
@@ -36,7 +41,21 @@ public class UmbrellaUtility : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if( !m_AttackPressed && currentAttackDelay <= 0.0f ){
+			if ( Input.GetAxis( "Attack" ) > 0.0f ) {
+				m_AttackPressed = true;
+				currentAttackDelay = attackDelay;
 
+			}
+		}
+
+		if( currentAttackDelay > 0.0f ) {
+			currentAttackDelay -= Time.smoothDeltaTime;
+			if( currentAttackDelay <= 0.0f ) {
+				currentAttackDelay = 0.0f;
+				m_AttackPressed = false;
+			}
+		}
 	}
 
 	void FixedUpdate() {
@@ -46,6 +65,12 @@ public class UmbrellaUtility : MonoBehaviour {
 			GetComponent<Grappler>().setGrappling( m_skillPressed );
 		}
 		delaySpawningWaterTimeLeft -= Time.smoothDeltaTime;
+
+		if ( m_AttackPressed ) {
+			attack();
+			m_AttackPressed = false;
+		}
+
 	}
 
 	void OnTriggerEnter2D( Collider2D other ) {
@@ -95,6 +120,11 @@ public class UmbrellaUtility : MonoBehaviour {
 
 	public void setSkillPressed( bool skill ) {
 		m_skillPressed = skill;
+	}
+
+	public void attack() {
+		GameObject blow = GameObject.Instantiate<GameObject>( blowObject, GameObject.Find ("Tip").transform.position );
+		blow.tag = "Blow";
 	}
 
 }
