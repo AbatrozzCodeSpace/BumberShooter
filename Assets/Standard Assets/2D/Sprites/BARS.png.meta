@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 70080ff5b97440b49aeac44fc0cdf49f
-timeCreated: 1431409686
+timeCreated: 1431490987
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,7 @@ TextureImporter:
     21300010: BARS_5
     21300012: BARS_6
     21300014: BARS_7
+    21300016: BARS_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -65,7 +66,7 @@ TextureImporter:
         width: 46
         height: 115
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: BARS_1
       rect:
@@ -75,7 +76,7 @@ TextureImporter:
         width: 368
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: BARS_2
       rect:
@@ -95,7 +96,7 @@ TextureImporter:
         width: 83
         height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: BARS_4
       rect:
@@ -105,7 +106,7 @@ TextureImporter:
         width: 73
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: BARS_5
       rect:
@@ -115,7 +116,7 @@ TextureImporter:
         width: 72
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: BARS_6
       rect:
@@ -125,7 +126,7 @@ TextureImporter:
         width: 368
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: BARS_7
       rect:
@@ -136,6 +137,16 @@ TextureImporter:
         height: 31
       alignment: 4
       pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BARS_8
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1464
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

@@ -30,6 +30,9 @@ namespace UnityStandardAssets._2D
 		private GameObject umbrellaObject;
 		private UmbrellaController umbrellaController;
 
+		public bool onLadder;
+		public bool onTopLadder;
+
         private void Awake()
         {
             // Setting up references.
@@ -42,6 +45,8 @@ namespace UnityStandardAssets._2D
 			//Debug.Log( umbrellaController != null );
 			m_defaultGravity = m_Rigidbody2D.gravityScale;
 			m_IsGrappling = false;
+			onLadder = false;
+			onTopLadder = false;
 
 //			colliders = gameObject.GetComponents<Collider2D>();
 //			Debug.Log( colliders.Length );
@@ -57,8 +62,8 @@ namespace UnityStandardAssets._2D
             Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
             {
-                if (colliders[i].gameObject != gameObject) {
-                    m_Grounded = true;
+				if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Ladder" ) {
+					m_Grounded = true;
 					m_doubleJumped = false;
 					m_Rigidbody2D.gravityScale = m_defaultGravity;
 				}
@@ -88,8 +93,13 @@ namespace UnityStandardAssets._2D
                     crouch = true;
                 }
             }
-
-            // Set whether or not the character is crouching in the animator
+			Debug.Log ( "ON LADDER :" + onLadder + " GROUNDED :" + m_Grounded );
+			if( onLadder && !m_Grounded ) {
+				Debug.Log ( "ON LADDER" );
+				crouch = false;
+			}
+			
+			// Set whether or not the character is crouching in the animator
             m_Anim.SetBool("Crouch", crouch);
 
             //only control the player if grounded or airControl is turned on
@@ -120,6 +130,9 @@ namespace UnityStandardAssets._2D
                     Flip();
                 }
             }
+
+
+
 
             // If the player should jump...
             if (m_Grounded && jump && m_Anim.GetBool("Ground"))
@@ -178,6 +191,19 @@ namespace UnityStandardAssets._2D
 				}
 
 			}
+
+			// ladder
+			if ( onLadder ) {
+				if( ( !m_Grounded && Input.GetAxisRaw("Vertical") != 0.0f ) || onTopLadder ) {
+					m_Rigidbody2D.gravityScale = 0.0f;
+				}
+				m_Rigidbody2D.velocity = new Vector2( m_Rigidbody2D.velocity.x , Input.GetAxisRaw("Vertical") * 10 );
+			} else {
+				m_Rigidbody2D.gravityScale = m_defaultGravity;
+				//m_Rigidbody2D.velocity = new Vector2( 0, Input.GetAxisRaw("Vertical") * 10 );
+			}
+			
+			Debug.Log ( "GRAVITY :" + m_Rigidbody2D.gravityScale );
 		}
 
 		
