@@ -137,6 +137,9 @@ public class DynamicParticle : MonoBehaviour {
 //			}
 //		} else
 		if (currentState == STATES.WATER) {
+			if(this.tag =="Water_u"){
+				Debug.Log("water_u collision with "+other.gameObject.name);
+			}
 			Transform parent = other.gameObject.transform.parent;
 			if(parent!=null){
 				if(parent.tag == "Foreground"){
@@ -145,7 +148,6 @@ public class DynamicParticle : MonoBehaviour {
 			}
 		} else if (currentState == STATES.RAIN) {
 			SetState(STATES.NONE);
-
 		}
 		
 	}

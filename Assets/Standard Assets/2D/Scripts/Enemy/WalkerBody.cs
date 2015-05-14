@@ -5,11 +5,17 @@ public class WalkerBody : MonoBehaviour {
 
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "Enemy" || other.gameObject.layer == 8) {
+		if (other.gameObject.tag == "Water_u") {
+			print("damage");
+			this.GetComponent<EnemyHealth>().applyDamage(other.gameObject.GetComponent<WaterProp>().damage);
+			other.gameObject.GetComponent<DynamicParticle>().SetState(DynamicParticle.STATES.WATER_O);
+		}
+		else if (other.gameObject.tag == "Enemy" || other.gameObject.layer == 8) {
 			transform.parent.GetComponent<Walker>().ChangeDirection();
 		}
-		if ( other.gameObject.tag == "Player" ) {
+		else if ( other.gameObject.tag == "Player" ) {
 			other.gameObject.GetComponent<CharacterHealth>().hitBehavior( gameObject );
 		}
+
 	}
 }

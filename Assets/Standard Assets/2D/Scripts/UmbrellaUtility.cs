@@ -120,6 +120,7 @@ public class UmbrellaUtility : MonoBehaviour {
 				delaySpawningWaterTimeLeft = 0.0f;
 				delaySpawningWaterTimeLeft += delaySpawningWaterTime;
 				GameObject spawnedWater = (GameObject) (GameObject.Instantiate( spawningWater, GameObject.Find( "Tip" ).transform.position, Quaternion.identity ) );
+				spawnedWater.gameObject.GetComponent<WaterProp>().damage=0.2f;
 				spawnedWater.tag = "Water_u";
 				Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
 				float angle = this.gameObject.transform.localEulerAngles.z;
