@@ -27,7 +27,6 @@ public class PlayerCheckBoundary : MonoBehaviour {
 	}
 
 	void EnableObject(bool enable){
-		print ("set object " + enable);
 		foreach (Transform child in transform.parent.transform) {
 			if(child != transform)
 				child.gameObject.SetActive(enable);

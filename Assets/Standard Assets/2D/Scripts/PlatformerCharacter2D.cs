@@ -168,35 +168,49 @@ namespace UnityStandardAssets._2D
 				m_Rigidbody2D.gravityScale = m_defaultGravity;
 				//Debug.Log ( "G = " + m_Rigidbody2D.gravityScale );
 				umbrellaController.setClosed();
-				if( Input.GetAxis( "Um_X" ) == 0 && Input.GetAxis( "Um_Y" ) == 0 ) {
-					// we will set umbrella from d-pad
-					umbrellaController.setUmbrellaRotation( new Vector2( Input.GetAxis( "Horizontal" ), -Input.GetAxis( "Vertical" ) ) );
-				}
-				else {
-					umbrellaController.setUmbrellaRotation( new Vector2 (Input.GetAxis( "Um_X" ), Input.GetAxis( "Um_Y" ) ) );
-					
-				}
+				Vector3 mouseVector = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+				//print("mouse pos " +mouseVector);
+				umbrellaController.setUmbrellaRotation(new Vector2(mouseVector.x-transform.position.x,-mouseVector.y+transform.position.y));
+
+//				if( Input.GetAxis( "Um_X" ) == 0 && Input.GetAxis( "Um_Y" ) == 0 ) {
+//					// we will set umbrella from d-pad
+//					umbrellaController.setUmbrellaRotation( new Vector2( Input.GetAxis( "Horizontal" ), -Input.GetAxis( "Vertical" ) ) );
+//				}
+//				else {
+//					umbrellaController.setUmbrellaRotation( new Vector2 (Input.GetAxis( "Um_X" ), Input.GetAxis( "Um_Y" ) ) );
+//					
+//				}
 			} else {
 				if( !m_doubleJumped ) {
 					m_Rigidbody2D.gravityScale = m_defaultGravity;
 				}
 			}
 			if ( !m_doubleJumped ) { // not jumping!
-				if ( Input.GetAxisRaw( "Guard" ) == 1 ) {
+//				if ( Input.GetAxisRaw( "Guard" ) == 1 ) {
+//					umbrellaController.setOpen();
+//				} else {
+//					umbrellaController.setClosed();
+//				}
+				if (Input.GetMouseButtonDown(1)){
 					umbrellaController.setOpen();
-				} else {
+				}
+				if (Input.GetMouseButtonUp(1)){
 					umbrellaController.setClosed();
 				}
-				
-				// if there is no input from right analog
-				if( Input.GetAxis( "Um_X" ) == 0 && Input.GetAxis( "Um_Y" ) == 0 ) {
-					// we will set umbrella from d-pad
-					umbrellaController.setUmbrellaRotation( new Vector2( Input.GetAxis( "Horizontal" ), -Input.GetAxis( "Vertical" ) ) );
-				}
-				else {
-					umbrellaController.setUmbrellaRotation( new Vector2 (Input.GetAxis( "Um_X" ), Input.GetAxis( "Um_Y" ) ) );
+				Vector3 mouseVector = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+				//print("mouse pos " +mouseVector);
+				umbrellaController.setUmbrellaRotation(new Vector2(mouseVector.x-transform.position.x,-mouseVector.y+transform.position.y));
 
-				}
+
+//				// if there is no input from right analog
+//				if( Input.GetAxis( "Um_X" ) == 0 && Input.GetAxis( "Um_Y" ) == 0 ) {
+//					// we will set umbrella from d-pad
+//					umbrellaController.setUmbrellaRotation( new Vector2( Input.GetAxis( "Horizontal" ), -Input.GetAxis( "Vertical" ) ) );
+//				}
+//				else {
+//					umbrellaController.setUmbrellaRotation( new Vector2 (Input.GetAxis( "Um_X" ), Input.GetAxis( "Um_Y" ) ) );
+//
+//				}
 
 			}
 
