@@ -22,9 +22,11 @@ public class AttackBlow : MonoBehaviour {
 	void OnTriggerEnter2D( Collider2D other ) {
 		if( other.tag == "Enemy" ) {
 			// TODO : HEALTH COMPONENT IN THE ENEMY?
-			Destroy( other.gameObject );
-			//Health h = other.gameObject.GetComponent<Health>();
-			//h.applyDamage( damage );
+			//Destroy( other.gameObject );
+			EnemyHealth h = other.gameObject.GetComponent<EnemyHealth>();
+			h.applyDamage( damage );
+			// destroy self!
+			Destroy(gameObject);
 		}
 	}
 }

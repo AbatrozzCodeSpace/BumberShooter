@@ -46,6 +46,7 @@ public class UmbrellaUtility : MonoBehaviour {
 		if( !m_AttackPressed && currentAttackDelay <= 0.0f ){
 
 			if ( CrossPlatformInputManager.GetButtonDown( "Attack" ) ) {
+				gameObject.GetComponent<UmbrellaController>().m_Attacking = true;
 				m_AttackPressed = true;
 				currentAttackDelay = attackDelay;
 				gameObject.transform.rotation = Quaternion.Euler( 0,0,45 );
@@ -63,6 +64,7 @@ public class UmbrellaUtility : MonoBehaviour {
 			currentAttackDelay -= Time.smoothDeltaTime;
 			if( currentAttackDelay <= 0.0f ) {
 				currentAttackDelay = 0.0f;
+				gameObject.GetComponent<UmbrellaController>().m_Attacking = false;
 				m_AttackPressed = false;
 				Destroy(GameObject.Find ("Tip").GetComponent<TrailRenderer>());
 			}

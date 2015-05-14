@@ -79,7 +79,9 @@ public class CharacterHealth : MonoBehaviour
 			if (other.tag == "Obstacles") {
 				return;
 			}
-			Destroy (other);
+			if( other.tag != "Enemy" ){
+				Destroy (other);
+			}
 		} else if (other.tag == "Rain") {
 			Debug.Log ("damage by rain--------------");
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
