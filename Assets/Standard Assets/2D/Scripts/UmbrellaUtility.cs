@@ -51,6 +51,8 @@ public class UmbrellaUtility : MonoBehaviour {
 				gameObject.transform.rotation = Quaternion.Euler( 0,0,45 );
 				TrailRenderer tr = GameObject.Find ("Tip").AddComponent<TrailRenderer>();
 				tr.material = trailMaterial;
+				tr.endWidth = 0.0f;
+				tr.startWidth = 0.5f;
 			}
 		}
 
