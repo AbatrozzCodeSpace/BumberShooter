@@ -42,14 +42,14 @@ namespace UnityStandardAssets._2D
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
 			umbrellaObject = GameObject.Find( "Umbrella" );
 			umbrellaController = umbrellaObject.GetComponent<UmbrellaController>();
-			//Debug.Log( umbrellaController != null );
+			////Debug.Log( umbrellaController != null );
 			m_defaultGravity = m_Rigidbody2D.gravityScale;
 			m_IsGrappling = false;
 			onLadder = false;
 			onTopLadder = false;
 
 //			colliders = gameObject.GetComponents<Collider2D>();
-//			Debug.Log( colliders.Length );
+//			//Debug.Log( colliders.Length );
         }
 
 
@@ -93,9 +93,9 @@ namespace UnityStandardAssets._2D
                     crouch = true;
                 }
             }
-			Debug.Log ( "ON LADDER :" + onLadder + " GROUNDED :" + m_Grounded );
+			//Debug.Log ( "ON LADDER :" + onLadder + " GROUNDED :" + m_Grounded );
 			if( onLadder && !m_Grounded ) {
-				Debug.Log ( "ON LADDER" );
+				//Debug.Log ( "ON LADDER" );
 				crouch = false;
 			}
 			
@@ -112,7 +112,7 @@ namespace UnityStandardAssets._2D
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
-				//Debug.Log ("GRAPPLING " + m_IsGrappling);
+				////Debug.Log ("GRAPPLING " + m_IsGrappling);
 				if( !m_IsGrappling ) {
                 	m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
 				}
@@ -145,7 +145,7 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				//Debug.Log ("1");
+				////Debug.Log ("1");
             } else 
 
 			// handle for double jump
@@ -161,12 +161,12 @@ namespace UnityStandardAssets._2D
 				umbrellaController.setUmbrellaRotation( new Vector2( 0, -1 ) );
 				umbrellaController.setOpen();
 
-				Debug.Log ( "Double Jump - G = " + m_Rigidbody2D.gravityScale ) ;
+				//Debug.Log ( "Double Jump - G = " + m_Rigidbody2D.gravityScale ) ;
 
 			} else if (!m_Grounded && !m_JumpPressed && !m_Anim.GetBool("Ground") && m_doubleJumped) {
 				// case when released the jump button
 				m_Rigidbody2D.gravityScale = m_defaultGravity;
-				Debug.Log ( "G = " + m_Rigidbody2D.gravityScale );
+				//Debug.Log ( "G = " + m_Rigidbody2D.gravityScale );
 				umbrellaController.setClosed();
 				if( Input.GetAxis( "Um_X" ) == 0 && Input.GetAxis( "Um_Y" ) == 0 ) {
 					// we will set umbrella from d-pad
@@ -203,7 +203,7 @@ namespace UnityStandardAssets._2D
 			// ladder
 
 			
-			Debug.Log ( "GRAVITY :" + m_Rigidbody2D.gravityScale );
+			////Debug.Log ( "GRAVITY :" + m_Rigidbody2D.gravityScale );
 		}
 
 		

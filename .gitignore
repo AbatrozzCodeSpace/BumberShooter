@@ -19,6 +19,5 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
-
-# our main.scene
-Assets/main.scene
+Assets/main_nuttest.unity
+Assets/main_nuttest.unity.meta

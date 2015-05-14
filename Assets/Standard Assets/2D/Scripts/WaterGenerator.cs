@@ -31,6 +31,7 @@ public class WaterGenerator : MonoBehaviour {
 		if (lastSpawnTime+SPAWN_INTERVAL<Time.time ) {
 			GameObject spawnedWater = (GameObject) (GameObject.Instantiate( waterSource ) );
 			spawnedWater.tag = "Water";
+			spawnedWater.layer = 4;
 			Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
 			rigid2d.AddForce( particleForce );
 

@@ -45,7 +45,7 @@ public class DynamicParticle : MonoBehaviour {
 			if(newState!=STATES.NONE){
 				currentState=newState;
 				startTime=Time.time;//Reset the life of the particle on a state change
-				GetComponent<Rigidbody2D>().velocity=new Vector2();	// Reset the particle velocity	
+				//GetComponent<Rigidbody2D>().velocity=new Vector2();	// Reset the particle velocity	
 				currentImage.SetActive(false);
 				currentImage=particleImages[(int)currentState];
 				currentImage.SetActive(true);
@@ -62,7 +62,7 @@ public class DynamicParticle : MonoBehaviour {
 	void Update () {
 		switch(currentState){
 		case STATES.WATER: //Water and lava got the same behaviour
-			MovementAnimation(); 
+			//MovementAnimation();
 			//ScaleDown();
 			break;
 		case STATES.WATER_F:
@@ -91,7 +91,7 @@ public class DynamicParticle : MonoBehaviour {
 		Vector3 movementScale=new Vector3(1.0f,1.0f,1.0f);//Tamaño de textura no de metaball			
 		movementScale.x+=Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x)/30.0f;
 		movementScale.z+=Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y)/30.0f;
-		movementScale.y=1.0f;		
+		movementScale.y=1.0f;
 		currentImage.gameObject.transform.localScale=movementScale;
 	}
 	// The effect for the particle to seem to fade away
@@ -118,9 +118,13 @@ public class DynamicParticle : MonoBehaviour {
 //				SetState(STATES.GAS);
 //			}
 //		} else
-		if (currentState == STATES.WATER && other.gameObject.transform.parent.gameObject.tag == "Foreground") {
-			SetState(STATES.WATER_F);
-			Debug.Log("set state water_f ");
+		if (currentState == STATES.WATER) {
+			Transform parent = other.gameObject.transform.parent;
+			if(parent!=null){
+				if(parent.tag == "Foreground"){
+					SetState(STATES.NONE);
+				}
+			}
 		} else if (currentState == STATES.RAIN) {
 			SetState(STATES.WATER);
 		}
