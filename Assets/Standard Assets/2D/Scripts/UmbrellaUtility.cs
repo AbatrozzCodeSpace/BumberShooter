@@ -116,6 +116,7 @@ public class UmbrellaUtility : MonoBehaviour {
 			break;
 		case Mode.WATERGUN:
 			if (waterLevel >= waterLevelForEachHit && delaySpawningWaterTimeLeft <= 0.0f ) {
+				waterLevel -= waterLevelForEachHit;
 				delaySpawningWaterTimeLeft = 0.0f;
 				delaySpawningWaterTimeLeft += delaySpawningWaterTime;
 				GameObject spawnedWater = (GameObject) (GameObject.Instantiate( spawningWater, GameObject.Find( "Tip" ).transform.position, Quaternion.identity ) );

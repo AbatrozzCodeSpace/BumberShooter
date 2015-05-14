@@ -251,4 +251,11 @@ public class CharacterHealth : MonoBehaviour
 		// Set the scale of the health bar to be proportional to the player's health.
 //		healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f, 1, 1);
 	}
+
+	public void heal( float amount ) {
+		health += amount;
+		if( health >= 1.0f ) {
+			health = 1.0f;
+		}
+	}
 }
