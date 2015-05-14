@@ -20,6 +20,10 @@ public class LadderTop : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay2D ( Collider2D other ) {
+		OnTriggerEnter2D ( other );
+	}
+
 	void OnTriggerExit2D ( Collider2D other ) {
 		if ( other.tag == "Player" ) {
 			other.GetComponent<PlatformerCharacter2D>().onTopLadder = false;

@@ -62,7 +62,7 @@ namespace UnityStandardAssets._2D
             Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
             {
-				if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Ladder" ) {
+				if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Ladder" && !onTopLadder ) {
 					m_Grounded = true;
 					m_doubleJumped = false;
 					m_Rigidbody2D.gravityScale = m_defaultGravity;
@@ -132,10 +132,14 @@ namespace UnityStandardAssets._2D
             }
 
 
+			if ( onLadder ) {
+				if( ( !m_Grounded && Input.GetAxisRaw("Vertical") != 0.0f ) || onTopLadder ) {
+					m_Rigidbody2D.gravityScale = 0.0f;
+				}
+				m_Rigidbody2D.velocity = new Vector2( m_Rigidbody2D.velocity.x , Input.GetAxisRaw("Vertical") * 10 );
+			} else 
 
-
-            // If the player should jump...
-            if (m_Grounded && jump && m_Anim.GetBool("Ground"))
+				if (m_Grounded && jump && m_Anim.GetBool("Ground"))
             {
                 // Add a vertical force to the player.
                 m_Grounded = false;
@@ -157,7 +161,7 @@ namespace UnityStandardAssets._2D
 				umbrellaController.setUmbrellaRotation( new Vector2( 0, -1 ) );
 				umbrellaController.setOpen();
 
-				Debug.Log ( "G = " + m_Rigidbody2D.gravityScale ) ;
+				Debug.Log ( "Double Jump - G = " + m_Rigidbody2D.gravityScale ) ;
 
 			} else if (!m_Grounded && !m_JumpPressed && !m_Anim.GetBool("Ground") && m_doubleJumped) {
 				// case when released the jump button
@@ -172,7 +176,11 @@ namespace UnityStandardAssets._2D
 					umbrellaController.setUmbrellaRotation( new Vector2 (Input.GetAxis( "Um_X" ), Input.GetAxis( "Um_Y" ) ) );
 					
 				}
-			} 
+			} else {
+				if( !m_doubleJumped ) {
+					m_Rigidbody2D.gravityScale = m_defaultGravity;
+				}
+			}
 			if ( !m_doubleJumped ) { // not jumping!
 				if ( Input.GetAxisRaw( "Guard" ) == 1 ) {
 					umbrellaController.setOpen();
@@ -193,15 +201,7 @@ namespace UnityStandardAssets._2D
 			}
 
 			// ladder
-			if ( onLadder ) {
-				if( ( !m_Grounded && Input.GetAxisRaw("Vertical") != 0.0f ) || onTopLadder ) {
-					m_Rigidbody2D.gravityScale = 0.0f;
-				}
-				m_Rigidbody2D.velocity = new Vector2( m_Rigidbody2D.velocity.x , Input.GetAxisRaw("Vertical") * 10 );
-			} else {
-				m_Rigidbody2D.gravityScale = m_defaultGravity;
-				//m_Rigidbody2D.velocity = new Vector2( 0, Input.GetAxisRaw("Vertical") * 10 );
-			}
+
 			
 			Debug.Log ( "GRAVITY :" + m_Rigidbody2D.gravityScale );
 		}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class UmbrellaUtility : MonoBehaviour {
 
@@ -10,6 +11,12 @@ public class UmbrellaUtility : MonoBehaviour {
 	public float delaySpawningWaterTime = 0.5f;
 	private float delaySpawningWaterTimeLeft;
 	private bool m_skillPressed;
+	private bool m_AttackPressed;
+	public float attackDelay = 0.25f;
+	private float currentAttackDelay;
+
+	public GameObject blowObject;
+	public Material trailMaterial;
 
 	public enum Mode {
 		GRAPPLER = 0,
@@ -36,7 +43,29 @@ public class UmbrellaUtility : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if( !m_AttackPressed && currentAttackDelay <= 0.0f ){
 
+			if ( CrossPlatformInputManager.GetButtonDown( "Attack" ) ) {
+				m_AttackPressed = true;
+				currentAttackDelay = attackDelay;
+				gameObject.transform.rotation = Quaternion.Euler( 0,0,45 );
+				TrailRenderer tr = GameObject.Find ("Tip").AddComponent<TrailRenderer>();
+				tr.material = trailMaterial;
+			}
+		}
+
+		if( currentAttackDelay > 0.0f ) {
+			// run attack animation
+			gameObject.transform.Rotate( new Vector3( 0,0, (Time.smoothDeltaTime / attackDelay ) * -90 ));
+			//
+			currentAttackDelay -= Time.smoothDeltaTime;
+			if( currentAttackDelay <= 0.0f ) {
+				currentAttackDelay = 0.0f;
+				m_AttackPressed = false;
+				Destroy(GameObject.Find ("Tip").GetComponent<TrailRenderer>());
+			}
+		}
+		Debug.Log ( "ATTACK :" + m_AttackPressed + " DELAY :" + currentAttackDelay + " INPUT :" + Input.GetAxisRaw( "Attack" ) );
 	}
 
 	void FixedUpdate() {
@@ -46,6 +75,12 @@ public class UmbrellaUtility : MonoBehaviour {
 			GetComponent<Grappler>().setGrappling( m_skillPressed );
 		}
 		delaySpawningWaterTimeLeft -= Time.smoothDeltaTime;
+
+		if ( m_AttackPressed ) {
+			attack();
+			m_AttackPressed = false;
+		}
+
 	}
 
 	void OnTriggerEnter2D( Collider2D other ) {
@@ -95,6 +130,11 @@ public class UmbrellaUtility : MonoBehaviour {
 
 	public void setSkillPressed( bool skill ) {
 		m_skillPressed = skill;
+	}
+
+	public void attack() {
+		GameObject blow = (GameObject) GameObject.Instantiate( blowObject, GameObject.Find ("Tip").transform.position, Quaternion.identity );
+		blow.tag = "Blow";
 	}
 
 }
