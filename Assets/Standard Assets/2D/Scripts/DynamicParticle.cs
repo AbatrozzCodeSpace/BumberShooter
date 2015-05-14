@@ -13,7 +13,9 @@ public class DynamicParticle : MonoBehaviour {
 		if (currentState == STATES.NONE)
 			SetState (STATES.WATER);
 	}
-
+	public void SetGravity(float gravity){
+		GetComponent<Rigidbody2D>().gravityScale=gravity;
+	}
 	public void SetState(STATES newState){
 		if(newState!=currentState){ //Only change to a different state
 			switch(newState){
@@ -22,7 +24,11 @@ public class DynamicParticle : MonoBehaviour {
 				break;
 			case STATES.WATER_O:
 				GetComponent<Rigidbody2D>().gravityScale=0.0f;
-				GetComponent<Rigidbody2D>().velocity=Vector2.zero;
+				GetComponent<WaterProp>().damage=0.0f;
+				GetComponent<WaterProp>().volume=0.0f;
+				break;
+			case STATES.WATER_F:
+				GetComponent<Rigidbody2D>().gravityScale=0.0f;
 				GetComponent<WaterProp>().damage=0.0f;
 				GetComponent<WaterProp>().volume=0.0f;
 				break;
@@ -66,7 +72,7 @@ public class DynamicParticle : MonoBehaviour {
 			//ScaleDown();
 			break;
 		case STATES.WATER_F:
-			ScaleDown();
+			ScaleDownFast();
 			break;
 		case STATES.RAIN:
 			MovementAnimation();
@@ -106,6 +112,17 @@ public class DynamicParticle : MonoBehaviour {
 			transform.localScale=particleScale;
 		}
 	}
+	void ScaleDownFast(){ 
+		float scaleValue = 1.0f-((Time.time-startTime)/particleLifeTime*4);
+		Vector2 particleScale=Vector2.one;
+		if (scaleValue <= 0) {
+			Destroy (gameObject);
+		} else{
+			particleScale.x=scaleValue;
+			particleScale.y=scaleValue;
+			transform.localScale=particleScale;
+		}
+	}
 	
 	// To change particles lifetime externally (like the particle generator)
 	public void SetLifeTime(float time){
@@ -122,11 +139,16 @@ public class DynamicParticle : MonoBehaviour {
 			Transform parent = other.gameObject.transform.parent;
 			if(parent!=null){
 				if(parent.tag == "Foreground"){
-					SetState(STATES.NONE);
+					SetState(STATES.WATER_F);
 				}
 			}
 		} else if (currentState == STATES.RAIN) {
-			SetState(STATES.WATER);
+			Transform parent = other.gameObject.transform.parent;
+			if(parent!=null){
+				if(parent.tag == "Foreground"){
+					SetState(STATES.NONE);
+				}
+			}
 		}
 		
 	}
