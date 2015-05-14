@@ -4,6 +4,7 @@ using System.Collections;
 public class AttackBlow : MonoBehaviour {
 
 	public float blowTimeout;
+	public float damage = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +20,10 @@ public class AttackBlow : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D( Collider2D other ) {
-		if( other.tag == "" ) {
-
+		if( other.tag == "Enemy" ) {
+			// TODO : HEALTH COMPONENT IN THE ENEMY?
+			//Health h = other.gameObject.GetComponent<Health>();
+			//h.applyDamage( damage );
 		}
 	}
 }
