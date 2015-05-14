@@ -69,7 +69,7 @@ public class UmbrellaUtility : MonoBehaviour {
 				Destroy(GameObject.Find ("Tip").GetComponent<TrailRenderer>());
 			}
 		}
-		Debug.Log ( "ATTACK :" + m_AttackPressed + " DELAY :" + currentAttackDelay + " INPUT :" + Input.GetAxisRaw( "Attack" ) );
+		//Debug.Log ( "ATTACK :" + m_AttackPressed + " DELAY :" + currentAttackDelay + " INPUT :" + Input.GetAxisRaw( "Attack" ) );
 	}
 
 	void FixedUpdate() {
@@ -126,7 +126,7 @@ public class UmbrellaUtility : MonoBehaviour {
 				int sign = (int)( Mathf.Sign(this.gameObject.transform.parent.root.localScale.x ) );
 				Vector2 vel = new Vector2( sign * Mathf.Cos( angle * Mathf.Deg2Rad ) * 500, Mathf.Sin( angle *  Mathf.Deg2Rad ) * 500 );
 				rigid2d.AddForce( vel );
-				Debug.Log( angle + "," + sign + "," + vel );
+				//Debug.Log( angle + "," + sign + "," + vel );
 
 			}
 			break;

@@ -143,12 +143,8 @@ public class DynamicParticle : MonoBehaviour {
 				}
 			}
 		} else if (currentState == STATES.RAIN) {
-			Transform parent = other.gameObject.transform.parent;
-			if(parent!=null){
-				if(parent.tag == "Foreground"){
-					SetState(STATES.NONE);
-				}
-			}
+			SetState(STATES.NONE);
+
 		}
 		
 	}
