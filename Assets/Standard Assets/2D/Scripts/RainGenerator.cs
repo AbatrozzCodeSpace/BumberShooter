@@ -24,7 +24,9 @@ public class RainGenerator : MonoBehaviour {
 			DynamicParticle particleScript=spawnedWater.GetComponent<DynamicParticle>(); // Get the particle script
 			particleScript.SetLifeTime(PARTICLE_LIFETIME); //Set each particle lifetime
 			particleScript.SetState(particlesState); //Set the particle State
-			spawnedWater.transform.position = transform.position;// Relocate to the spawner position
+			Vector3 random = new Vector3(Random.Range(-5.0f,5.0f),Random.Range(-5.0f,5.0f),0);
+			spawnedWater.transform.position = transform.position+random;// Relocate to the spawner position
+
 			spawnedWater.transform.rotation = transform.rotation;
 			
 			WaterProp waterProp = spawnedWater.GetComponent<WaterProp>();

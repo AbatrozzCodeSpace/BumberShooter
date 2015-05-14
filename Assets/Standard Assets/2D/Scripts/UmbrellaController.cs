@@ -24,6 +24,8 @@ public class UmbrellaController : MonoBehaviour {
 
 	public void setUmbrellaRotation( Vector2 axes ) {
 		float angle = Mathf.Atan( -axes.y / axes.x ) * Mathf.Rad2Deg;
+		if (angle != angle)
+			return;
 		if ( axes.x < 0 ) {
 			angle = - ( ( -Mathf.Atan( -axes.y / axes.x ) * Mathf.Rad2Deg ) + 90 ) - 90;
 		}

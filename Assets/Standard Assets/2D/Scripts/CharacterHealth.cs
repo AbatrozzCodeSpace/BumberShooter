@@ -205,10 +205,10 @@ public class CharacterHealth : MonoBehaviour
 		
 		// Add a force to the player in the direction of the vector and multiply by the hurtForce.
 		Rigidbody2D rigid = GetComponent<Rigidbody2D> ();
-		rigid.velocity = Vector2.zero;
-		if (enemy.tag != "Rain")
+		if (enemy.tag != "Rain") {
+			rigid.velocity = Vector2.zero;
 			rigid.AddForce (hurtVector * hurtForce);
-		
+		}
 		// Reduce the player's health by 10.
 		health -= damageAmount;
 
