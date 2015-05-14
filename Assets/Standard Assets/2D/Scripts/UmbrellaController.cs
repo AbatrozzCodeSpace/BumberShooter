@@ -10,6 +10,7 @@ public class UmbrellaController : MonoBehaviour {
 	private PolygonCollider2D umbrellaCollider;
 
 	private bool m_skillPressed;
+	public bool m_Attacking;
 
 
 	public void setOpen(){
@@ -23,24 +24,29 @@ public class UmbrellaController : MonoBehaviour {
 	}
 
 	public void setUmbrellaRotation( Vector2 axes ) {
-		float angle = Mathf.Atan( -axes.y / axes.x ) * Mathf.Rad2Deg;
-		if ( axes.x < 0 ) {
-			angle = - ( ( -Mathf.Atan( -axes.y / axes.x ) * Mathf.Rad2Deg ) + 90 ) - 90;
+		if( !m_Attacking ) {
+			float angle = Mathf.Atan( -axes.y / axes.x ) * Mathf.Rad2Deg;
+			if ( axes.x < 0 ) {
+				angle = - ( ( -Mathf.Atan( -axes.y / axes.x ) * Mathf.Rad2Deg ) + 90 ) - 90;
+			}
+			if ( transform.root.localScale.x < 0 ) { // to the left
+				angle = -(angle + 90) - 90;
+			}
+			transform.rotation = Quaternion.Euler( new Vector3( 0,0, angle ) );
 		}
-		if ( transform.root.localScale.x < 0 ) { // to the left
-			angle = -(angle + 90) - 90;
-		}
-		transform.rotation = Quaternion.Euler( new Vector3( 0,0, angle ) );
 	}
 
 	public void setUmbrellaRotation( float angle ) {
-		transform.rotation = Quaternion.Euler( new Vector3( 0, 0, angle ) );
+		if ( !m_Attacking ) {
+			transform.rotation = Quaternion.Euler( new Vector3( 0, 0, angle ) );
+		}
 	}
 
 	// Use this for initialization
 	void Awake() {
 		umbrellaCollider = GetComponent<PolygonCollider2D>();
 		m_skillPressed = false;
+		m_Attacking = false;
 	}
 
 	void Start () {
