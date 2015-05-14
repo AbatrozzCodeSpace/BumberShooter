@@ -8,5 +8,8 @@ public class WalkerBody : MonoBehaviour {
 		if (other.gameObject.tag == "Enemy" || other.gameObject.layer == 8) {
 			transform.parent.GetComponent<Walker>().ChangeDirection();
 		}
+		if ( other.gameObject.tag == "Player" ) {
+			other.gameObject.GetComponent<CharacterHealth>().hitBehavior( gameObject );
+		}
 	}
 }
