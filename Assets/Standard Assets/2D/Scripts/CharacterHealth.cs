@@ -32,27 +32,21 @@ public class CharacterHealth : MonoBehaviour
 		//healthScale = healthBar.transform.localScale;
 	}
 
-	void OnCollisionEnter2D (Collision2D col)
-	{
-		OnCollisionStay2D (col);
-	}
-	
-	void OnCollisionStay2D (Collision2D col)
-	{
+	public void hitBehavior ( GameObject other ) {
 		// If the colliding gameobject is an Enemy...
-		if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Water" || col.gameObject.tag == "Obstacles" || col.gameObject.tag == "Water_u") {
+		if (other.tag == "Enemy" || other.tag == "Water" || other.tag == "Obstacles" || other.tag == "Water_u") {
 			Debug.Log ("damage by something--------------");
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
 			if (Time.time > lastHitTime + repeatDamagePeriod) {
 				// ... and if the player still has health...
 				if (health > 0f) {
 					// ... take damage and reset the lastHitTime.
-					WaterProp damage = col.gameObject.GetComponent<WaterProp> ();
+					WaterProp damage = other.GetComponent<WaterProp> ();
 					if (damage != null) {
 						damageAmount = damage.damage;
 					}
 					if (damageAmount > 0f) {
-						TakeDamage (col.transform);
+						TakeDamage (other.transform);
 						lastHitTime = Time.time;
 					}
 				}
@@ -75,29 +69,29 @@ public class CharacterHealth : MonoBehaviour
 					GetComponent<PlatformerCharacter2D> ().enabled = false;
 					
 					// ... disable the Gun script to stop a dead guy shooting a nonexistant bazooka
-//					GetComponentInChildren<Gun>().enabled = false;
+					//					GetComponentInChildren<Gun>().enabled = false;
 					
 					// ... Trigger the 'Die' animation state
 					anim.SetTrigger ("Die");
 					platformControl.canControl = false;
 				}
 			}
-			if (col.gameObject.tag == "Obstacles") {
+			if (other.tag == "Obstacles") {
 				return;
 			}
-			Destroy (col.gameObject);
-		} else if (col.gameObject.tag == "Rain") {
+			Destroy (other);
+		} else if (other.tag == "Rain") {
 			Debug.Log ("damage by rain--------------");
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
 			// ... and if the player still has health...
 			if (health > 0f) {
 				// ... take damage and reset the lastHitTime.
-				WaterProp damage = col.gameObject.GetComponent<WaterProp> ();
+				WaterProp damage = other.GetComponent<WaterProp> ();
 				if (damage != null) {
 					damageAmount = damage.damage;
 				}
 				if (damageAmount > 0f) {
-					TakeDamage (col.transform);
+					TakeDamage (other.transform);
 					lastHitTime = Time.time;
 				}
 			} else {
@@ -107,12 +101,96 @@ public class CharacterHealth : MonoBehaviour
 				anim.SetTrigger ("Die");
 				platformControl.canControl = false;
 			}
-
-			if (col.gameObject.tag == "Obstacles") {
+			
+			if (other.tag == "Obstacles") {
 				return;
 			}
-			Destroy (col.gameObject);
+			Destroy (other);
 		}
+	}
+
+	void OnCollisionEnter2D (Collision2D col)
+	{
+		OnCollisionStay2D (col);
+	}
+	
+	void OnCollisionStay2D (Collision2D col)
+	{
+		hitBehavior( col.gameObject );
+//		// If the colliding gameobject is an Enemy...
+//		if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Water" || col.gameObject.tag == "Obstacles" || col.gameObject.tag == "Water_u") {
+//			Debug.Log ("damage by something--------------");
+//			// ... and if the time exceeds the time of the last hit plus the time between hits...
+//			if (Time.time > lastHitTime + repeatDamagePeriod) {
+//				// ... and if the player still has health...
+//				if (health > 0f) {
+//					// ... take damage and reset the lastHitTime.
+//					WaterProp damage = col.gameObject.GetComponent<WaterProp> ();
+//					if (damage != null) {
+//						damageAmount = damage.damage;
+//					}
+//					if (damageAmount > 0f) {
+//						TakeDamage (col.transform);
+//						lastHitTime = Time.time;
+//					}
+//				}
+//				// If the player doesn't have health, do some stuff, let him fall into the river to reload the level.
+//				else {
+//					// Find all of the colliders on the gameobject and set them all to be triggers.
+//					Collider2D[] cols = GetComponents<Collider2D> ();
+//					foreach (Collider2D c in cols) {
+//						//c.isTrigger = true;
+//					}
+//					
+//					// Move all sprite parts of the player to the front
+//					//SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer>();
+//					//foreach(SpriteRenderer s in spr)
+//					//{
+//					//	s.sortingLayerName = "UI";
+//					//}
+//					
+//					// ... disable user Player Control script
+//					GetComponent<PlatformerCharacter2D> ().enabled = false;
+//					
+//					// ... disable the Gun script to stop a dead guy shooting a nonexistant bazooka
+////					GetComponentInChildren<Gun>().enabled = false;
+//					
+//					// ... Trigger the 'Die' animation state
+//					anim.SetTrigger ("Die");
+//					platformControl.canControl = false;
+//				}
+//			}
+//			if (col.gameObject.tag == "Obstacles") {
+//				return;
+//			}
+//			Destroy (col.gameObject);
+//		} else if (col.gameObject.tag == "Rain") {
+//			Debug.Log ("damage by rain--------------");
+//			// ... and if the time exceeds the time of the last hit plus the time between hits...
+//			// ... and if the player still has health...
+//			if (health > 0f) {
+//				// ... take damage and reset the lastHitTime.
+//				WaterProp damage = col.gameObject.GetComponent<WaterProp> ();
+//				if (damage != null) {
+//					damageAmount = damage.damage;
+//				}
+//				if (damageAmount > 0f) {
+//					TakeDamage (col.transform);
+//					lastHitTime = Time.time;
+//				}
+//			} else {
+//				Collider2D[] cols = GetComponents<Collider2D> ();
+//				foreach (Collider2D c in cols)
+//					GetComponent<PlatformerCharacter2D> ().enabled = false;
+//				anim.SetTrigger ("Die");
+//				platformControl.canControl = false;
+//			}
+//
+//			if (col.gameObject.tag == "Obstacles") {
+//				return;
+//			}
+//			Destroy (col.gameObject);
+//		}
 	}
 	
 	void TakeDamage (Transform enemy)
