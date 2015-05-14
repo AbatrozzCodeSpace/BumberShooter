@@ -45,7 +45,7 @@ public class DynamicParticle : MonoBehaviour {
 			if(newState!=STATES.NONE){
 				currentState=newState;
 				startTime=Time.time;//Reset the life of the particle on a state change
-				GetComponent<Rigidbody2D>().velocity=new Vector2();	// Reset the particle velocity	
+				//GetComponent<Rigidbody2D>().velocity=new Vector2();	// Reset the particle velocity	
 				currentImage.SetActive(false);
 				currentImage=particleImages[(int)currentState];
 				currentImage.SetActive(true);
@@ -120,9 +120,11 @@ public class DynamicParticle : MonoBehaviour {
 //		} else
 		if (currentState == STATES.WATER) {
 			Transform parent = other.gameObject.transform.parent;
-			if(parent!=null)
-				if(parent.gameObject.tag == "Foreground")
-					SetState(STATES.WATER_F);
+			if(parent!=null){
+				if(parent.tag == "Foreground"){
+					SetState(STATES.NONE);
+				}
+			}
 		} else if (currentState == STATES.RAIN) {
 			SetState(STATES.WATER);
 		}
