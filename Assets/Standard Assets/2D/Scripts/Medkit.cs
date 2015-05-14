@@ -11,7 +11,7 @@ public class Medkit : MonoBehaviour {
 		if ( pickable ) {
 			GetComponent<BoxCollider2D>().isTrigger = true;
 		} else {
-			GetComponent<BoxCollider2D>().isTrigger = true;
+			GetComponent<BoxCollider2D>().isTrigger = false;
 		}
 	}
 	
