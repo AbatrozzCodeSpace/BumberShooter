@@ -14,7 +14,7 @@ public class WaterReceiver : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other){
 		print ("collide with water");
-		if (other.tag == "Water" || other.tag=="Water_u") {
+		if (other.tag == "Water" || other.tag=="Water_u" || other.tag == "Rain") {
 			waterScript.IncreaseWater ();
 			Destroy( other.gameObject);
 		}
