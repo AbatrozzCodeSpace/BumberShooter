@@ -4,7 +4,7 @@ using System.Collections;
 public class WaterHealth : MonoBehaviour {
 
 	public float waterLevel = 0f;
-	float waterMax = 100f;
+	public float waterMax = 100f;
 	public float waterSensitity = 20f;
 	public bool isGrowth = false;
 	public bool isFullGrowth = false;
