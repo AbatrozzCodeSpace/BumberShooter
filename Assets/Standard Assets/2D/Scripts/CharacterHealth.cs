@@ -6,10 +6,11 @@ public class CharacterHealth : MonoBehaviour
 {	
 	public float health = 1.0f;					// The player's health.
 	public float repeatDamagePeriod = 2f;		// How frequently the player can be damaged.
+	public float rainDamagePeriod = 0.1f;
 	public float loseControlPeriod = 0.2f;		// How frequently the player can be damaged.
 	//public AudioClip[] ouchClips;				// Array of clips to play when the player is damaged.
 	public float hurtForce = 100f;				// The force with which the player is pushed when hurt.
-	public float damageAmount = 0.1f;			// The amount of damage to take when enemies touch the player
+	public float damageAmount = 0.3f;			// The amount of damage to take when enemies touch the player
 
 	//private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
 	private float lastHitTime;					// The time at which the player was last hit.
@@ -95,7 +96,7 @@ public class CharacterHealth : MonoBehaviour
 				if (damageAmount > 0f) {
 					Debug.Log ("damage by rain "+damageAmount);
 					TakeDamage (other.transform);
-					lastHitTime = Time.time;
+					lastHitTime = Time.time - repeatDamagePeriod + rainDamagePeriod;
 				}
 			} else {
 				Collider2D[] cols = GetComponents<Collider2D> ();
@@ -213,7 +214,12 @@ public class CharacterHealth : MonoBehaviour
 			rigid.AddForce (hurtVector * hurtForce);
 		}
 		// Reduce the player's health by 10.
+		EnemyDamage enemyDamage = enemy.GetComponent<EnemyDamage> ();
+		if(enemyDamage != null){
+			damageAmount = enemyDamage.damage;
+		}
 		health -= damageAmount;
+
 
 		if (health <= 0) {
 			anim.SetTrigger ("Die");
