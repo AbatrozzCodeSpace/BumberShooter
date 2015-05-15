@@ -23,6 +23,7 @@ public class DynamicParticle : MonoBehaviour {
 				GetComponent<Rigidbody2D>().gravityScale=1.0f; // To simulate Water density
 				break;
 			case STATES.WATER_O:
+				GetComponent<Rigidbody2D>().velocity=new Vector2();
 				GetComponent<Rigidbody2D>().gravityScale=0.0f;
 				GetComponent<WaterProp>().damage=0.0f;
 				GetComponent<WaterProp>().volume=0.0f;
@@ -75,7 +76,7 @@ public class DynamicParticle : MonoBehaviour {
 			ScaleDownFast();
 			break;
 		case STATES.RAIN:
-			MovementAnimation();
+			//MovementAnimation();
 			break;
 		case STATES.WATER_O:
 			ScaleDown();
@@ -136,6 +137,9 @@ public class DynamicParticle : MonoBehaviour {
 //			}
 //		} else
 		if (currentState == STATES.WATER) {
+			if(this.tag =="Water_u"){
+				Debug.Log("water_u collision with "+other.gameObject.name);
+			}
 			Transform parent = other.gameObject.transform.parent;
 			if(parent!=null){
 				if(parent.tag == "Foreground"){
@@ -144,7 +148,6 @@ public class DynamicParticle : MonoBehaviour {
 			}
 		} else if (currentState == STATES.RAIN) {
 			SetState(STATES.NONE);
-
 		}
 		
 	}

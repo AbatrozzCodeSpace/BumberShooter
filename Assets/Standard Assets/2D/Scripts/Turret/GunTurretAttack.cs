@@ -63,7 +63,7 @@ public class GunTurretAttack : MonoBehaviour {
 		//print ("speed " + speed);
 
 		float nowAngle = transform.localRotation.eulerAngles.z;
-		print ("ss " + nowAngle+" " + (nowAngle / 180 * Mathf.PI) + " " +Mathf.Sin(nowAngle/180*Mathf.PI)+" "+Mathf.Cos(nowAngle/180*Mathf.PI));
+		//print ("ss " + nowAngle+" " + (nowAngle / 180 * Mathf.PI) + " " +Mathf.Sin(nowAngle/180*Mathf.PI)+" "+Mathf.Cos(nowAngle/180*Mathf.PI));
 		GetComponentInChildren<WaterGenerator> ().particleForce = new Vector3(-speed*Mathf.Sin(nowAngle/180*Mathf.PI), speed*Mathf.Cos(nowAngle/180*Mathf.PI),0);
 	}
 

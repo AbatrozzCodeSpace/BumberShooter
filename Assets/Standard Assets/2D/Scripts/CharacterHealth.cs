@@ -83,7 +83,7 @@ public class CharacterHealth : MonoBehaviour
 				Destroy (other);
 			}
 		} else if (other.tag == "Rain") {
-			Debug.Log ("damage by rain--------------");
+
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
 			// ... and if the player still has health...
 			if (health > 0f) {
@@ -93,6 +93,7 @@ public class CharacterHealth : MonoBehaviour
 					damageAmount = damage.damage;
 				}
 				if (damageAmount > 0f) {
+					Debug.Log ("damage by rain "+damageAmount);
 					TakeDamage (other.transform);
 					lastHitTime = Time.time;
 				}
