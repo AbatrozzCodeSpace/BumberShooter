@@ -97,7 +97,7 @@ public class UmbrellaUtility : MonoBehaviour {
 			}
 			//Destroy( other.gameObject );
 			DynamicParticle particleScript = other.GetComponent<DynamicParticle>(); // Get the particle script
-			particleScript.SetState(DynamicParticle.STATES.WATER_O);
+			particleScript.SetState(DynamicParticle.STATES.WATER_EFFECT);
 		} else if ( other.tag == "Enemy" ) {
 			// disable body colliders!
 			//other.enabled = false;

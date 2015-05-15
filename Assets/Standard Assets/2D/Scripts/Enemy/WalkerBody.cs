@@ -8,7 +8,7 @@ public class WalkerBody : MonoBehaviour {
 		if (other.gameObject.tag == "Water_u") {
 			print("damage");
 			this.GetComponent<EnemyHealth>().applyDamage(other.gameObject.GetComponent<WaterProp>().damage);
-			other.gameObject.GetComponent<DynamicParticle>().SetState(DynamicParticle.STATES.WATER_O);
+			other.gameObject.GetComponent<DynamicParticle>().SetState(DynamicParticle.STATES.WATER_EFFECT);
 		}
 		else if (other.gameObject.tag == "Enemy" || other.gameObject.layer == 8) {
 			transform.parent.GetComponent<Walker>().ChangeDirection();
