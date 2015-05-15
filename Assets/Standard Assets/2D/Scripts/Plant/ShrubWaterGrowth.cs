@@ -6,7 +6,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 	WaterHealth waterScript;
 
 	Vector3 fullSizePosition;
-	float shrinkSize = 0.5f;
+	float shrinkSize = 0.7f;
 
 	bool isLastGrowth = false;
 
