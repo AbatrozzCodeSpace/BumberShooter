@@ -47,6 +47,7 @@ public class UmbrellaUtility : MonoBehaviour {
 
 			if ( CrossPlatformInputManager.GetButtonDown( "Attack" ) ) {
 				gameObject.GetComponent<UmbrellaController>().m_Attacking = true;
+				gameObject.GetComponent<UmbrellaController>().setClosed();
 				m_AttackPressed = true;
 				currentAttackDelay = attackDelay;
 				gameObject.transform.rotation = Quaternion.Euler( 0,0,45 );
