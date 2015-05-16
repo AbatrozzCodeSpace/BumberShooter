@@ -10,6 +10,9 @@ public class ShrubWaterGrowth : MonoBehaviour {
 
 	bool isLastGrowth = false;
 
+	public Color normalColor = new Color (0, 1f, 0);
+	public Color growthColor = new Color (60f/255f, 160f/255f, 60f/255f);
+
 	// Use this for initialization
 	void Start () {
 		fullSizePosition = transform.position;
@@ -40,7 +43,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 			((BoxCollider2D) component).enabled = true;
 		}
 
-		transform.Find ("Body").GetComponent<SpriteRenderer> ().color = new Color (60f/255f, 160f/255f, 60f/255f);
+		transform.Find ("Body").GetComponent<SpriteRenderer> ().color = growthColor;
 
 	}
 
@@ -50,7 +53,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 		transform.localScale = new Vector3 (shrinkSize, shrinkSize, 1f);
 		Vector3 newSize = body.GetComponent<Renderer> ().bounds.size;
 		transform.position += new Vector3 ((oldSize.x - newSize.x) / 2, (oldSize.y - newSize.y) / 2, 0);
-		body.GetComponent<SpriteRenderer> ().color = new Color (0, 1f, 0);
+		body.GetComponent<SpriteRenderer> ().color = normalColor;
 
 		BoxCollider2D[] components = GetComponentsInChildren<BoxCollider2D>();
 		foreach (BoxCollider2D component in components){
