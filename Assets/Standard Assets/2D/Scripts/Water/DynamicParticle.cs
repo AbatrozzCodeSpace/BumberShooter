@@ -71,8 +71,6 @@ public class DynamicParticle : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (transform.position.y < 50)
-            Destroy(gameObject);
         switch (currentState) {
             case STATES.WATER: //Water and lava got the same behaviour
                 //MovementAnimation();
