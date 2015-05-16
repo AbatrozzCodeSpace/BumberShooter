@@ -13,7 +13,6 @@ public class WaterReceiver : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        print("collide with water");
         if (other.tag == "Water" || other.tag == "Water_u" || other.tag == "Rain") {
             DynamicParticle particle = other.gameObject.GetComponent<DynamicParticle>();
             WaterProp waterProp = other.gameObject.GetComponent<WaterProp>();

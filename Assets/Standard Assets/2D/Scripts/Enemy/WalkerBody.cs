@@ -6,7 +6,6 @@ public class WalkerBody : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Water_u") {
-			print("damage");
 			this.GetComponent<EnemyHealth>().applyDamage(other.gameObject.GetComponent<WaterProp>().damage);
 			other.gameObject.GetComponent<DynamicParticle>().SetState(DynamicParticle.STATES.WATER_EFFECT);
 		}
