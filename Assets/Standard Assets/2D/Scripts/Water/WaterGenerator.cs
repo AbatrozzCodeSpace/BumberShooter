@@ -19,20 +19,11 @@ public class WaterGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//		if( lastSpawnTime+SPAWN_INTERVAL<Time.time ){ // Is it time already for spawning a new particle?
-		//			GameObject newLiquidParticle=(GameObject)Instantiate(Resources.Load("DynamicParticle")); //Spawn a particle
-		//			newLiquidParticle.GetComponent<Rigidbody2D>().AddForce( particleForce); //Add our custom force
-		//			DynamicParticle particleScript=newLiquidParticle.GetComponent<DynamicParticle>(); // Get the particle script
-		//			particleScript.SetLifeTime(PARTICLE_LIFETIME); //Set each particle lifetime
-		//			particleScript.SetState(particlesState); //Set the particle State
-		//			newLiquidParticle.transform.position=transform.position;// Relocate to the spawner position
-		//			newLiquidParticle.transform.parent=particlesParent;// Add the particle to the parent container			
-		//			lastSpawnTime=Time.time; // Register the last spawnTime			
-		//		}
 		if (lastSpawnTime+SPAWN_INTERVAL<Time.time ) {
 			GameObject spawnedWater = (GameObject) (GameObject.Instantiate( waterSource ) );
 			spawnedWater.tag = "Water";
 			spawnedWater.layer = 4;
+            spawnedWater.transform.parent = this.gameObject.transform;
 			Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
 			rigid2d.AddForce( particleForce );
 			rigid2d.gravityScale = gravity;
