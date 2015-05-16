@@ -9,6 +9,8 @@ namespace UnityStandardAssets._2D
         {
             if (other.tag == "Player")
             {
+				PlayerPrefs.DeleteKey( "SpawnX" );
+				PlayerPrefs.DeleteKey( "SpawnY" );
                 Application.LoadLevel(Application.loadedLevelName);
             }
         }
