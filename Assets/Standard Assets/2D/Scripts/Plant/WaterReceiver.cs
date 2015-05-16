@@ -11,13 +11,14 @@ public class WaterReceiver : MonoBehaviour {
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }
+    public void IncreaseWater(float waterAmount) {
+        waterScript.IncreaseWater(waterAmount);
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Water" || other.tag == "Water_u" || other.tag == "Rain") {
             DynamicParticle particle = other.gameObject.GetComponent<DynamicParticle>();
             WaterProp waterProp = other.gameObject.GetComponent<WaterProp>();
-            if (waterProp == null)
-                return;
             if (particle != null && particle.currentState == DynamicParticle.STATES.ACID) {
                 this.transform.parent.GetComponent<PlantHealth>().DecreaseHP(waterProp.damage);
                 particle.SetState(DynamicParticle.STATES.WATER_EFFECT);

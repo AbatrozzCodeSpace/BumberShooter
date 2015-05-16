@@ -71,6 +71,8 @@ public class DynamicParticle : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (transform.position.y < 50)
+            Destroy(gameObject);
         switch (currentState) {
             case STATES.WATER: //Water and lava got the same behaviour
                 //MovementAnimation();
@@ -138,10 +140,15 @@ public class DynamicParticle : MonoBehaviour {
     // Here we handle the collision events with another particles, in this example water+lava= water-> gas
     void OnCollisionEnter2D(Collision2D other) {
         if (currentState == STATES.WATER) {
-            Transform parent = other.gameObject.transform.parent;
-            if (parent != null) {
-                if (parent.tag == "Foreground") {
-                    SetState(STATES.WATER_EFFECT);
+            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Foreground") {
+                SetState(STATES.WATER_EFFECT);
+            }
+            else {
+                Transform parent = other.gameObject.transform.parent;
+                if (parent != null) {
+                    if (parent.tag == "Foreground") {
+                        SetState(STATES.WATER_EFFECT);
+                    }
                 }
             }
         }

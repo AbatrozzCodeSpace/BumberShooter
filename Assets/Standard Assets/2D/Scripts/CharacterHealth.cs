@@ -116,7 +116,6 @@ public class CharacterHealth : MonoBehaviour {
                 }
                 if (damageAmount > 0f) {
                     TakeDamage(other.transform);
-                    lastHitTime = Time.time - repeatDamagePeriod + rainDamagePeriod;
                 }
             }
             else {
@@ -132,9 +131,6 @@ public class CharacterHealth : MonoBehaviour {
             }
             Destroy(other);
         }
-    }
-    void OnTriggerStay2D(Collider2D col) {
-        hitBehavior(col.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D col) {
