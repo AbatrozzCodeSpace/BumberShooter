@@ -55,7 +55,8 @@ public class CharacterHealth : MonoBehaviour {
                     GetComponent<PlatformerCharacter2D>().enabled = false;
                     anim.SetTrigger("Die");
                     platformControl.canControl = false;
-                }
+					Application.LoadLevel(Application.loadedLevelName);
+				}
             }
         }
         else if (other.tag == "Enemy") {
@@ -78,6 +79,7 @@ public class CharacterHealth : MonoBehaviour {
                     GetComponent<PlatformerCharacter2D>().enabled = false;
                     anim.SetTrigger("Die");
                     platformControl.canControl = false;
+					Application.LoadLevel(Application.loadedLevelName);
                 }
             }
         }
@@ -101,7 +103,8 @@ public class CharacterHealth : MonoBehaviour {
                     GetComponent<PlatformerCharacter2D>().enabled = false;
                     anim.SetTrigger("Die");
                     platformControl.canControl = false;
-                }
+					Application.LoadLevel(Application.loadedLevelName);
+				}
             }
         }
         else if (other.tag == "Rain") {
@@ -124,8 +127,9 @@ public class CharacterHealth : MonoBehaviour {
                     GetComponent<PlatformerCharacter2D>().enabled = false;
                 anim.SetTrigger("Die");
                 platformControl.canControl = false;
-            }
-
+				Application.LoadLevel(Application.loadedLevelName);
+			}
+			
             if (other.tag == "Obstacles") {
                 return;
             }
