@@ -6,6 +6,7 @@ public class UmbrellaUtility : MonoBehaviour {
 
 	public float waterLevel = 0.0f;
 	public float waterLevelForEachHit = 0.1f;
+    public DynamicParticle.STATES waterGunType = DynamicParticle.STATES.WATER;
 
 	public GameObject spawningWater;
 	public float delaySpawningWaterTime = 0.5f;
@@ -123,6 +124,7 @@ public class UmbrellaUtility : MonoBehaviour {
 				GameObject spawnedWater = (GameObject) (GameObject.Instantiate( spawningWater, GameObject.Find( "Tip" ).transform.position, Quaternion.identity ) );
 				spawnedWater.gameObject.GetComponent<WaterProp>().damage=0.2f;
 				spawnedWater.tag = "Water_u";
+                spawnedWater.gameObject.GetComponent<DynamicParticle>().SetState(waterGunType);
 				Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
 				float angle = this.gameObject.transform.localEulerAngles.z;
 				int sign = (int)( Mathf.Sign(this.gameObject.transform.parent.root.localScale.x ) );

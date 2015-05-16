@@ -94,7 +94,6 @@ public class CharacterHealth : MonoBehaviour
 					damageAmount = damage.damage;
 				}
 				if (damageAmount > 0f) {
-					Debug.Log ("damage by rain "+damageAmount);
 					TakeDamage (other.transform);
 					lastHitTime = Time.time - repeatDamagePeriod + rainDamagePeriod;
 				}

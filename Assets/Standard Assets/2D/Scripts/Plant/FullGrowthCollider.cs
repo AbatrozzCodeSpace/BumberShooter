@@ -9,7 +9,7 @@ public class FullGrowthCollider : MonoBehaviour {
 		if (transform.parent != other.transform.parent) {
 			return;
 		}
-		WaterHealth waterScript = other.gameObject.GetComponentInParent<WaterHealth> ();
+		PlantHealth waterScript = other.gameObject.GetComponentInParent<PlantHealth> ();
 		if (waterScript != null) {
 			waterScript.isFullGrowth = true;
 		}
@@ -21,7 +21,7 @@ public class FullGrowthCollider : MonoBehaviour {
 		if (transform.parent != other.transform.parent) {
 			return;
 		}
-		WaterHealth waterScript = other.gameObject.GetComponentInParent<WaterHealth> ();
+		PlantHealth waterScript = other.gameObject.GetComponentInParent<PlantHealth> ();
 		if (waterScript != null) {
 			waterScript.isFullGrowth = false;
 		}

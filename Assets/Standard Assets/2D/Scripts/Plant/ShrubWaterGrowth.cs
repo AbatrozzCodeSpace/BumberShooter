@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShrubWaterGrowth : MonoBehaviour {
 
-	WaterHealth waterScript;
+	PlantHealth waterScript;
 
 	Vector3 fullSizePosition;
 	float shrinkSize = 0.7f;
@@ -13,7 +13,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fullSizePosition = transform.position;
-		waterScript = GetComponent<WaterHealth> ();
+		waterScript = GetComponent<PlantHealth> ();
 		Shrink ();
 		isLastGrowth = false;
 	}

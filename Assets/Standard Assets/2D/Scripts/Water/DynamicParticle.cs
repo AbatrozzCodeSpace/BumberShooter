@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class DynamicParticle : MonoBehaviour {
-    public enum STATES { WATER, WATER_F, WATER_EFFECT, GAS, RAIN, LAVA, NONE }; //The 3 states of the particle
-    STATES currentState = STATES.NONE; //Defines the currentstate of the particle, default is water
+    public enum STATES { WATER, WATER_F, WATER_EFFECT, GAS, RAIN, ACID, LAVA, NONE }; //The 3 states of the particle
+    public STATES currentState = STATES.NONE; //Defines the currentstate of the particle, default is water
     public GameObject currentImage; //The image is for the metaball shader for the effect, it is onle seen by the liquids camera.
     public GameObject[] particleImages; //We need multiple particle images to reduce drawcalls
     float GAS_FLOATABILITY = 7.0f; //How fast does the gas goes up?
@@ -37,6 +37,9 @@ public class DynamicParticle : MonoBehaviour {
                 case STATES.RAIN:
                     GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                     this.transform.localScale /= 2;
+                    break;
+                case STATES.ACID:
+                    GetComponent<Rigidbody2D>().gravityScale = 1.0f;
                     break;
                 case STATES.GAS:
                     particleLifeTime = particleLifeTime / 2.0f;	// Gas lives the time the other particles
@@ -83,7 +86,7 @@ public class DynamicParticle : MonoBehaviour {
                 ScaleDown();
                 break;
             case STATES.LAVA:
-                MovementAnimation();
+                //MovementAnimation();
                 ScaleDown();
                 break;
             case STATES.GAS:

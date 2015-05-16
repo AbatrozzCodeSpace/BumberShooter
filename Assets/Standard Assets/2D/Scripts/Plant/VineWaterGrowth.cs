@@ -3,14 +3,14 @@ using System.Collections;
 
 public class VineWaterGrowth : MonoBehaviour {
 
-	WaterHealth waterScript;
+	PlantHealth waterScript;
 	float yRelative;
 	float speed = 1f;
 
 	// Use this for initialization
 	void Start () {
 		yRelative =  transform.Find("Body").localScale.y / transform.Find ("Body").GetComponent<Renderer>().bounds.size.y ;
-		waterScript = GetComponent<WaterHealth> ();
+		waterScript = GetComponent<PlantHealth> ();
 	}
 	
 	// Update is called once per frame
