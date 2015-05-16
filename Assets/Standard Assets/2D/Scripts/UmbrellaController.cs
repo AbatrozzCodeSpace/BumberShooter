@@ -14,8 +14,10 @@ public class UmbrellaController : MonoBehaviour {
 
 
 	public void setOpen(){
-		gameObject.GetComponent<SpriteRenderer>().sprite = spriteOpen;
-		umbrellaCollider.enabled = true;
+		if( !m_Attacking ) {
+			gameObject.GetComponent<SpriteRenderer>().sprite = spriteOpen;
+			umbrellaCollider.enabled = true;
+		}
 	}
 
 	public void setClosed() {

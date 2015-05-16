@@ -11,7 +11,7 @@ public class UmbrellaUtility : MonoBehaviour {
 	public float delaySpawningWaterTime = 0.5f;
 	private float delaySpawningWaterTimeLeft;
 	private bool m_skillPressed;
-	private bool m_AttackPressed;
+	public bool m_AttackPressed;
 	public float attackDelay = 0.25f;
 	private float currentAttackDelay;
 
