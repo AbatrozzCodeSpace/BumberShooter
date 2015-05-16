@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 518f01d92314ebe4cb6d6c8d95c41647
-timeCreated: 1431760797
+timeCreated: 1431763221
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,8 @@ TextureImporter:
     21300008: Keys_Space
     21300010: Keys_Ctrl
     21300012: Keys_Shift
+    21300014: ArrowCurved
+    21300016: ArrowRight
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -123,6 +125,26 @@ TextureImporter:
         y: 65
         width: 85
         height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ArrowCurved
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 15
+        width: 54
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ArrowRight
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 42
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
