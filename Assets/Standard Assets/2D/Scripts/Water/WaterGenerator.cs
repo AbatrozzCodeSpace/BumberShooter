@@ -23,7 +23,7 @@ public class WaterGenerator : MonoBehaviour {
             GameObject spawnedWater = (GameObject)(GameObject.Instantiate(waterSource));
             spawnedWater.tag = "Water";
             spawnedWater.layer = 4;
-            spawnedWater.transform.parent = this.gameObject.transform;
+            //spawnedWater.transform.parent = this.gameObject.transform;
             Rigidbody2D rigid2d = spawnedWater.GetComponent<Rigidbody2D>();
             rigid2d.AddForce(particleForce);
             rigid2d.gravityScale = gravity;
