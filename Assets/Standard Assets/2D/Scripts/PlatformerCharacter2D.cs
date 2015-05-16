@@ -191,7 +191,7 @@ namespace UnityStandardAssets._2D
 //				} else {
 //					umbrellaController.setClosed();
 //				}
-				if (Input.GetMouseButton(1)){
+				if (Input.GetMouseButton(1) ){
 					umbrellaController.setOpen();
 				}
 				if (!Input.GetMouseButton(1)){

@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 518f01d92314ebe4cb6d6c8d95c41647
+timeCreated: 1431763221
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Keys_WASD
+    21300002: Keys_Arrows
+    21300004: Keys_lCkick
+    21300006: Keys_rClick
+    21300008: Keys_Space
+    21300010: Keys_Ctrl
+    21300012: Keys_Shift
+    21300014: ArrowCurved
+    21300016: ArrowRight
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Keys_WASD
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 169
+        width: 121
+        height: 83
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Keys_Arrows
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 169
+        width: 121
+        height: 83
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Keys_lCkick
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 75
+        width: 47
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Keys_rClick
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 75
+        width: 47
+        height: 85
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Keys_Space
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 114
+        width: 124
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Keys_Ctrl
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 65
+        width: 61
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Keys_Shift
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 65
+        width: 85
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ArrowCurved
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 15
+        width: 54
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ArrowRight
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 42
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
