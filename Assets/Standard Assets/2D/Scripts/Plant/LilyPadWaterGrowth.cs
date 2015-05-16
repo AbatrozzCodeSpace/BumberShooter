@@ -5,7 +5,7 @@ public class LilyPadWaterGrowth : MonoBehaviour {
 
 	PlantHealth waterScript;
 	float yRelative;
-	float speed = 1f;
+	public float speed = 1f;
 	
 	// Use this for initialization
 	void Start () {

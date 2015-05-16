@@ -15,7 +15,7 @@ public class WaterReceiver : MonoBehaviour {
         waterScript.IncreaseWater(waterAmount);
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         if (other.tag == "Water" || other.tag == "Water_u" || other.tag == "Rain") {
             DynamicParticle particle = other.gameObject.GetComponent<DynamicParticle>();
             WaterProp waterProp = other.gameObject.GetComponent<WaterProp>();
@@ -26,6 +26,10 @@ public class WaterReceiver : MonoBehaviour {
                 waterScript.IncreaseWater(waterProp.damage);
                 Destroy(other.gameObject);
             }
+        }
+        else if (other.tag == "Well") {
+            print("collide with well");
+            waterScript.IncreaseWater(other.gameObject.GetComponent<WellProp>().waterRate);
         }
     }
 

@@ -137,7 +137,7 @@ public class DynamicParticle : MonoBehaviour {
     }
     // Here we handle the collision events with another particles, in this example water+lava= water-> gas
     void OnCollisionEnter2D(Collision2D other) {
-        if (currentState == STATES.WATER) {
+        if (currentState == STATES.WATER || currentState == STATES.ACID) {
             if (other.gameObject.tag == "Player" || other.gameObject.tag == "Foreground") {
                 SetState(STATES.WATER_EFFECT);
             }
