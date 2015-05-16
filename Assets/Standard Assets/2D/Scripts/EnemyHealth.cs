@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour {
 		hp -= damage;
 		if( hp <= 0.0f ) {
 			hp = 0.0f;
-			Destroy ( transform.root.gameObject );
+			Destroy ( transform.parent.gameObject );
 		}
 	}
 
