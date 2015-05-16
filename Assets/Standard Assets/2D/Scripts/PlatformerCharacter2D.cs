@@ -191,10 +191,10 @@ namespace UnityStandardAssets._2D
 //				} else {
 //					umbrellaController.setClosed();
 //				}
-				if (Input.GetMouseButtonDown(1)){
+				if (Input.GetMouseButton(1)){
 					umbrellaController.setOpen();
 				}
-				if (Input.GetMouseButtonUp(1)){
+				if (!Input.GetMouseButton(1)){
 					umbrellaController.setClosed();
 				}
 				Vector3 mouseVector = Camera.main.ScreenToWorldPoint (Input.mousePosition);
