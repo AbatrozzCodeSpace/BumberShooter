@@ -13,6 +13,8 @@ public class PlantHealth : MonoBehaviour {
     public bool isDecreasing = true;
     public float waterDecreaseSpeed = 0.1f;
 
+	public GameObject waterLevelBar;
+
     void Update() {
         if (isDecreasing) {
             waterLevel -= waterDecreaseSpeed * Time.deltaTime;
@@ -23,6 +25,9 @@ public class PlantHealth : MonoBehaviour {
                 waterLevel = 0;
             }
         }
+		Vector3 currentScale = waterLevelBar.transform.localScale;
+		currentScale.y = waterLevel/waterMax;
+		waterLevelBar.transform.localScale = currentScale;
     }
 
     public void IncreaseWater(float waterSensitivity) {
