@@ -7,6 +7,7 @@ public class PlantHealth : MonoBehaviour {
     public float waterMax = 1.0f;
     public float waterAmplifier = 2f;
     public float plantHP = 1.0f;
+    public bool resistAcid = false;
     public bool isGrowth = false;
     public bool isFullGrowth = false;
     public bool isFullShrink = false;

@@ -6,6 +6,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 	PlantHealth waterScript;
 
 	Vector3 fullSizePosition;
+    Vector3 fullSizeLocalscale;
 	float shrinkSize = 0.7f;
 
 	bool isLastGrowth = false;
@@ -16,6 +17,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fullSizePosition = transform.position;
+        fullSizeLocalscale = transform.localScale;
 		waterScript = GetComponent<PlantHealth> ();
 		Shrink ();
 		isLastGrowth = false;
@@ -36,7 +38,7 @@ public class ShrubWaterGrowth : MonoBehaviour {
 
 	void Growth(){
 		transform.position = fullSizePosition;
-		transform.localScale = new Vector3 (1.0f, 1.0f, 1f);
+		transform.localScale = fullSizeLocalscale;
 		Component[] components = GetComponentsInChildren<BoxCollider2D>();
 
 		foreach (Component component in components){

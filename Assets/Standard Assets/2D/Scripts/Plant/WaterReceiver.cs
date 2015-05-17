@@ -20,16 +20,19 @@ public class WaterReceiver : MonoBehaviour {
             DynamicParticle particle = other.gameObject.GetComponent<DynamicParticle>();
             WaterProp waterProp = other.gameObject.GetComponent<WaterProp>();
             if (particle != null && particle.currentState == DynamicParticle.STATES.ACID) {
+                if (waterScript.resistAcid) {
+                    particle.SetState(DynamicParticle.STATES.WATER_EFFECT);
+                    return;
+                }
                 this.transform.parent.GetComponent<PlantHealth>().DecreaseHP(waterProp.damage);
                 particle.SetState(DynamicParticle.STATES.WATER_EFFECT);
-            } else {
-                waterScript.IncreaseWater(waterProp.damage);
-                Destroy(other.gameObject);
             }
+            waterScript.IncreaseWater(waterProp.damage);
+            Destroy(other.gameObject);
         }
         else if (other.tag == "Well") {
             print("collide with well");
-            waterScript.IncreaseWater(other.gameObject.GetComponent<WellProp>().waterRate*wellReceiverRate);
+            waterScript.IncreaseWater(other.gameObject.GetComponent<WellProp>().waterRate * wellReceiverRate);
         }
     }
 
