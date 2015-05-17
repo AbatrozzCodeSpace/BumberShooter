@@ -29,6 +29,12 @@ public class BumberShooterHUD : MonoBehaviour {
 	public float lerpSpeed = 0.1f;
 
 	public Sprite[] skillBadges;
+
+	public GameObject pauseUI;
+	public bool isPaused;
+
+
+
 	// Use this for initialization
 	void Awake() {
 		character = player.GetComponent<CharacterHealth>();
@@ -41,6 +47,7 @@ public class BumberShooterHUD : MonoBehaviour {
 		oldWater = umbrella.waterLevel;
 		startLerp = false;
 		startLerpWater = false;
+		isPaused = false;
 	}
 
 	void Start () {
@@ -49,6 +56,22 @@ public class BumberShooterHUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if ( Input.GetButtonDown( "Pause" ) ) {
+			isPaused = !isPaused;
+		}
+
+		if ( isPaused ) {
+			Time.timeScale = 0.0f;
+		} else {
+			Time.timeScale = 1.0f;
+		}
+
+		// select the menu
+		if ( isPaused ) {
+
+		}
+
 		if( debugText ) {
 			Text text = textObject.GetComponent<Text>();
 			text.enabled = true;
@@ -101,6 +124,21 @@ public class BumberShooterHUD : MonoBehaviour {
 		//Badge
 		badge.GetComponent<Image>().sprite = skillBadges[(int) umbrella.currentMode];
 
+		// pause menu
+		if( isPaused ) {
+			pauseUI.SetActive( true );
+		} else {
+			pauseUI.SetActive( false );
+		}
+
+	}
+
+	public void resumeButton() {
+		isPaused = false;
+	}
+
+	public void restartButton() {
+		Application.LoadLevel(Application.loadedLevelName);
 	}
 
 }
