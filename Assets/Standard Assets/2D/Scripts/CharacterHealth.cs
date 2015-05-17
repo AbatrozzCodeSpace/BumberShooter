@@ -46,16 +46,12 @@ public class CharacterHealth : MonoBehaviour {
                         TakeDamage(other.transform);
                         lastHitTime = Time.time;
                     }
+					if ( health < 0.0f ) {
+						die ();
+					}
                 }
                 else {
-                    Collider2D[] cols = GetComponents<Collider2D>();
-                    foreach (Collider2D c in cols) {
-                        //c.isTrigger = true;
-                    }
-                    GetComponent<PlatformerCharacter2D>().enabled = false;
-                    anim.SetTrigger("Die");
-                    platformControl.canControl = false;
-					Application.LoadLevel(Application.loadedLevelName);
+					die ();
 				}
             }
         }
@@ -70,16 +66,12 @@ public class CharacterHealth : MonoBehaviour {
                         TakeDamage(other.transform);
                         lastHitTime = Time.time;
                     }
+					if ( health < 0.0f ) {
+						die ();
+					}
                 }
                 else {
-                    Collider2D[] cols = GetComponents<Collider2D>();
-                    foreach (Collider2D c in cols) {
-                        //c.isTrigger = true;
-                    }
-                    GetComponent<PlatformerCharacter2D>().enabled = false;
-                    anim.SetTrigger("Die");
-                    platformControl.canControl = false;
-					Application.LoadLevel(Application.loadedLevelName);
+					die ();
                 }
             }
         }
@@ -94,16 +86,12 @@ public class CharacterHealth : MonoBehaviour {
                         TakeDamage(other.transform);
                         lastHitTime = Time.time;
                     }
+					if ( health < 0.0f ) {
+						die ();
+					}
                 }
                 else {
-                    Collider2D[] cols = GetComponents<Collider2D>();
-                    foreach (Collider2D c in cols) {
-                        //c.isTrigger = true;
-                    }
-                    GetComponent<PlatformerCharacter2D>().enabled = false;
-                    anim.SetTrigger("Die");
-                    platformControl.canControl = false;
-					Application.LoadLevel(Application.loadedLevelName);
+					die ();
 				}
             }
         }
@@ -120,14 +108,12 @@ public class CharacterHealth : MonoBehaviour {
                 if (damageAmount > 0f) {
                     TakeDamage(other.transform);
                 }
+				if ( health < 0.0f ) {
+					die ();
+				}
             }
             else {
-                Collider2D[] cols = GetComponents<Collider2D>();
-                foreach (Collider2D c in cols)
-                    GetComponent<PlatformerCharacter2D>().enabled = false;
-                anim.SetTrigger("Die");
-                platformControl.canControl = false;
-				Application.LoadLevel(Application.loadedLevelName);
+				die ();
 			}
 			
             if (other.tag == "Obstacles") {
@@ -285,4 +271,12 @@ public class CharacterHealth : MonoBehaviour {
             health = 1.0f;
         }
     }
+
+	void die() {
+		health = 0.0f;
+		GetComponent<PlatformerCharacter2D>().enabled = false;
+		anim.SetTrigger("Die");
+		platformControl.canControl = false;
+		Application.LoadLevel(Application.loadedLevelName);
+	}
 }
