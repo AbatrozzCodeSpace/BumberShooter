@@ -16,12 +16,18 @@ namespace UnityStandardAssets._2D
         private Vector3 m_CurrentVelocity;
         private Vector3 m_LookAheadPos;
 
+
+		private float cameraSizeDefault;
+		private Transform defaultTarget;
         // Use this for initialization
         private void Start()
         {
             m_LastTargetPosition = target.position;
             m_OffsetZ = (transform.position - target.position).z;
             transform.parent = null;
+
+			cameraSizeDefault = gameObject.GetComponent<Camera>().orthographicSize;
+			defaultTarget = target;
         }
 
 
@@ -49,5 +55,15 @@ namespace UnityStandardAssets._2D
 
             m_LastTargetPosition = target.position;
         }
+
+		public void backToDefault() {
+			target = defaultTarget;
+			gameObject.GetComponent<Camera>().orthographicSize = cameraSizeDefault;
+		}
+
+		public void setNewTarget( Transform target, float size ) {
+			this.target = target;
+			gameObject.GetComponent<Camera>().orthographicSize = size;
+		}
     }
 }
