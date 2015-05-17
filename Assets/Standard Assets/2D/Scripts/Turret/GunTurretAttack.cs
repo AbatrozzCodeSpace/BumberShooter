@@ -40,7 +40,6 @@ public class GunTurretAttack : MonoBehaviour {
 					RotateGun(direction,attackTimer/attackTime);
 			}
 		} else {
-			cooldownTimer += Time.deltaTime;
 			if (cooldownTimer > cooldownTime){
 				cooldownTimer = 0;
 				isActive = true;
@@ -79,6 +78,7 @@ public class GunTurretAttack : MonoBehaviour {
 						RotateGun(direction, cooldownTimer/cooldownTime);
 				}
 			}
+			cooldownTimer += Time.deltaTime;
 		}
 	}
 
