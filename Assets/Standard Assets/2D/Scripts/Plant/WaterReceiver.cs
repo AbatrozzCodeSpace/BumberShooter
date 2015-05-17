@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WaterReceiver : MonoBehaviour {
-
+    public float wellReceiverRate = 0.1f;
     PlantHealth waterScript;
     // Use this for initialization
     void Start() {
@@ -29,7 +29,7 @@ public class WaterReceiver : MonoBehaviour {
         }
         else if (other.tag == "Well") {
             print("collide with well");
-            waterScript.IncreaseWater(other.gameObject.GetComponent<WellProp>().waterRate);
+            waterScript.IncreaseWater(other.gameObject.GetComponent<WellProp>().waterRate*wellReceiverRate);
         }
     }
 
