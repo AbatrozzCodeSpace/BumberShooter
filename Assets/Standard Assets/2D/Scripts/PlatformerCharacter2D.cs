@@ -22,6 +22,7 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
+		public bool canDoubleJump;
 		private bool m_doubleJumped = false;
 		private float m_defaultGravity;
 		private bool m_JumpPressed;
@@ -148,7 +149,7 @@ namespace UnityStandardAssets._2D
             } else 
 
 			// handle for double jump
-			if (!m_Grounded && jump && !m_Anim.GetBool("Ground") && !m_doubleJumped)
+			if (!m_Grounded && jump && !m_Anim.GetBool("Ground") && !m_doubleJumped && canDoubleJump)
 			{
 				// Add a vertical force to the player.
 				m_Grounded = false;
@@ -162,7 +163,7 @@ namespace UnityStandardAssets._2D
 
 				//Debug.Log ( "Double Jump - G = " + m_Rigidbody2D.gravityScale ) ;
 
-			} else if (!m_Grounded && !m_JumpPressed && !m_Anim.GetBool("Ground") && m_doubleJumped) {
+			} else if (!m_Grounded && !m_JumpPressed && !m_Anim.GetBool("Ground") && m_doubleJumped && canDoubleJump) {
 				// case when released the jump button
 				m_Rigidbody2D.gravityScale = m_defaultGravity;
 				//Debug.Log ( "G = " + m_Rigidbody2D.gravityScale );
